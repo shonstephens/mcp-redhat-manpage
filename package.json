@@ -8,8 +8,7 @@
   },
   "main": "./src/index.js",
   "scripts": {
-    "start": "node src/index.js",
-    "extract": "bash scripts/extract.sh"
+    "start": "node src/index.js"
   },
   "keywords": [
     "mcp",
@@ -28,6 +27,7 @@
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",
+    "mcp-redhat-manpage-data": "^0.1.0",
     "zod": "^3.25.0"
   }
 }

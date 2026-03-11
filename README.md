@@ -14,29 +14,12 @@ An [MCP](https://modelcontextprotocol.io/) server for RHEL man pages. Lets AI as
 ## Prerequisites
 
 - Node.js 18+
-- Podman (or Docker) with network access to `registry.access.redhat.com`
 
-## Setup
-
-Man pages must be extracted locally before the server can serve them. The extraction script pulls UBI container images, installs target packages, renders all man pages to plain text, and stores them under `manpages/rhel{8,9,10}/`.
-
-```bash
-npm install
-
-# Extract all versions
-npm run extract
-
-# Or a specific version
-bash scripts/extract.sh 9
-```
-
-The extraction script installs packages from these categories: SSSD/identity (`sssd-common`, `sssd-ad`, `sssd-ldap`, `sssd-krb5`, `sssd-tools`, `sssd-client`), Kerberos (`krb5-workstation`, `krb5-libs`), AD integration (`adcli`, `realmd`), auth stack (`authselect`), crypto (`crypto-policies`, `crypto-policies-scripts`), system services (`chrony`, `systemd`), network (`NetworkManager`, `bind-utils`), core (`man-db`, `man-pages`, `coreutils`, `shadow-utils`), and PAM (`pam`). Edit the `PACKAGES` array in `scripts/extract.sh` to add more.
-
-Extraction uses the `:latest` UBI image tag for each major version, which tracks the latest minor release. Man pages are indexed by major version only. UBI repos are a subset of full RHEL — unavailable packages are skipped with a warning. Re-run extraction periodically to pick up updates.
+Man pages for RHEL 8, 9, and 10 are included via the [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) dependency. No container runtime or manual extraction required.
 
 ## Configuration
 
-No authentication required. The server reads pre-extracted man pages from the local filesystem.
+No authentication required. The server reads man pages bundled in the data package.
 
 ### Gemini CLI
 
@@ -47,10 +30,7 @@ Add to `~/.gemini/settings.json`:
   "mcpServers": {
     "redhat-manpage": {
       "command": "npx",
-      "args": ["-y", "mcp-redhat-manpage"],
-      "env": {
-        "MANPAGES_DIR": "/path/to/manpages"
-      }
+      "args": ["-y", "mcp-redhat-manpage"]
     }
   }
 }
@@ -66,8 +46,6 @@ orchestrate toolkits import --kind mcp \
   --tools "*"
 ```
 
-Set `MANPAGES_DIR` to the directory containing your extracted man pages.
-
 ### Claude Code
 
 Add to `~/.claude/settings.json`:
@@ -77,10 +55,7 @@ Add to `~/.claude/settings.json`:
   "mcpServers": {
     "redhat-manpage": {
       "command": "npx",
-      "args": ["-y", "mcp-redhat-manpage"],
-      "env": {
-        "MANPAGES_DIR": "/path/to/manpages"
-      }
+      "args": ["-y", "mcp-redhat-manpage"]
     }
   }
 }
@@ -96,19 +71,17 @@ Add to `.vscode/mcp.json` in your workspace:
     "redhat-manpage": {
       "type": "stdio",
       "command": "npx",
-      "args": ["-y", "mcp-redhat-manpage"],
-      "env": {
-        "MANPAGES_DIR": "/path/to/manpages"
-      }
+      "args": ["-y", "mcp-redhat-manpage"]
     }
   }
 }
 ```
 
-If `MANPAGES_DIR` is not set, the server looks for a `manpages/` directory relative to the package installation.
+To override the bundled man pages with a custom directory, set the `MANPAGES_DIR` environment variable.
 
 ## Related MCP Servers
 
+- [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) - Man page data (bundled as a dependency)
 - [mcp-redhat-knowledge](https://github.com/shonstephens/mcp-redhat-knowledge) - Knowledge Base search
 - [mcp-redhat-support](https://github.com/shonstephens/mcp-redhat-support) - Support case management
 - [mcp-redhat-account](https://github.com/shonstephens/mcp-redhat-account) - Account management

@@ -7,12 +7,23 @@ import { readdir, readFile } from "node:fs/promises";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { existsSync } from "node:fs";
+import { createRequire } from "node:module";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
-const PROJECT_DIR = dirname(__dirname);
+const require = createRequire(import.meta.url);
 
-// Allow override via environment variable for flexibility
-const MANPAGES_DIR = process.env.MANPAGES_DIR || join(PROJECT_DIR, "manpages");
+// Resolve man pages directory: env override > data package > local fallback
+function resolveManpagesDir() {
+  if (process.env.MANPAGES_DIR) return process.env.MANPAGES_DIR;
+  try {
+    const { manpagesDir } = require("mcp-redhat-manpage-data");
+    return manpagesDir;
+  } catch {
+    return join(dirname(__dirname), "manpages");
+  }
+}
+
+const MANPAGES_DIR = resolveManpagesDir();
 
 const server = new McpServer({
   name: "mcp-redhat-manpage",
