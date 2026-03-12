@@ -27,7 +27,7 @@ const MANPAGES_DIR = resolveManpagesDir();
 
 const server = new McpServer({
   name: "mcp-redhat-manpage",
-  version: "0.1.0",
+  version: "0.2.0",
 });
 
 // Cache loaded man pages in memory for fast repeated lookups

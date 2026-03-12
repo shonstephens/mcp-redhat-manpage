@@ -81,11 +81,11 @@ To override the bundled man pages with a custom directory, set the `MANPAGES_DIR
 
 ## Related MCP Servers
 
-- [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) - Man page data (bundled as a dependency)
-- [mcp-redhat-knowledge](https://github.com/shonstephens/mcp-redhat-knowledge) - Knowledge Base search
-- [mcp-redhat-support](https://github.com/shonstephens/mcp-redhat-support) - Support case management
 - [mcp-redhat-account](https://github.com/shonstephens/mcp-redhat-account) - Account management
+- [mcp-redhat-knowledge](https://github.com/shonstephens/mcp-redhat-knowledge) - Knowledge Base search
+- [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) - Man page data (bundled as a dependency)
 - [mcp-redhat-subscription](https://github.com/shonstephens/mcp-redhat-subscription) - Subscription management
+- [mcp-redhat-support](https://github.com/shonstephens/mcp-redhat-support) - Support case management
 
 ## License
 
