@@ -1,6 +1,6 @@
 {
   "name": "mcp-redhat-manpage",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "MCP server providing version-indexed RHEL man pages for configuration verification",
   "type": "module",
   "bin": {
@@ -19,11 +19,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/shonstephens/mcp-redhat-manpage.git"
+    "url": "git+https://github.com/sleepytimeshon/mcp-redhat-manpage.git"
   },
-  "homepage": "https://github.com/shonstephens/mcp-redhat-manpage#readme",
+  "homepage": "https://github.com/sleepytimeshon/mcp-redhat-manpage#readme",
   "bugs": {
-    "url": "https://github.com/shonstephens/mcp-redhat-manpage/issues"
+    "url": "https://github.com/sleepytimeshon/mcp-redhat-manpage/issues"
   },
   "dependencies": {
     "@modelcontextprotocol/sdk": "^1.26.0",

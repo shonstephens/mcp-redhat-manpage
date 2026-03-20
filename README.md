@@ -15,7 +15,7 @@ An [MCP](https://modelcontextprotocol.io/) server for RHEL man pages. Lets AI as
 
 - Node.js 18+
 
-Man pages for RHEL 8, 9, and 10 are included via the [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) dependency. No container runtime or manual extraction required.
+Man pages for RHEL 8, 9, and 10 are included via the [mcp-redhat-manpage-data](https://github.com/sleepytimeshon/mcp-redhat-manpage-data) dependency. No container runtime or manual extraction required.
 
 ## Configuration
 
@@ -81,11 +81,11 @@ To override the bundled man pages with a custom directory, set the `MANPAGES_DIR
 
 ## Related MCP Servers
 
-- [mcp-redhat-account](https://github.com/shonstephens/mcp-redhat-account) - Account management
-- [mcp-redhat-knowledge](https://github.com/shonstephens/mcp-redhat-knowledge) - Knowledge Base search
-- [mcp-redhat-manpage-data](https://github.com/shonstephens/mcp-redhat-manpage-data) - Man page data (bundled as a dependency)
-- [mcp-redhat-subscription](https://github.com/shonstephens/mcp-redhat-subscription) - Subscription management
-- [mcp-redhat-support](https://github.com/shonstephens/mcp-redhat-support) - Support case management
+- [mcp-redhat-account](https://github.com/sleepytimeshon/mcp-redhat-account) - Account management
+- [mcp-redhat-knowledge](https://github.com/sleepytimeshon/mcp-redhat-knowledge) - Knowledge Base search
+- [mcp-redhat-manpage-data](https://github.com/sleepytimeshon/mcp-redhat-manpage-data) - Man page data (bundled as a dependency)
+- [mcp-redhat-subscription](https://github.com/sleepytimeshon/mcp-redhat-subscription) - Subscription management
+- [mcp-redhat-support](https://github.com/sleepytimeshon/mcp-redhat-support) - Support case management
 
 ## License
 
